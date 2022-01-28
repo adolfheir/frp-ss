@@ -1,0 +1,11 @@
+# 版本
+version: "3.2"
+
+services:
+  frpc:
+    image: snowdreamtech/frps
+    volumes:
+      # 方式1：指定绝对明确(绝对路径)的挂载目录
+      - ./frps.ini:/etc/frp/frps.ini
+    restart: always
+    network_mode: "host"

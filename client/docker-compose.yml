@@ -1,0 +1,20 @@
+# 版本
+version: "3.2"
+
+services:
+  shadowsocks:
+    image: shadowsocks/shadowsocks-libev
+    environment:
+      - METHOD=chacha20-ietf-poly1305
+      - PASSWORD=***
+      - SERVER_PORT=8388
+    restart: always
+    network_mode: "host"
+
+  frpc:
+    image: snowdreamtech/frpc
+    volumes:
+      # 方式1：指定绝对明确(绝对路径)的挂载目录
+      - ./frpc.ini:/etc/frp/frpc.ini
+    restart: always
+    network_mode: "host"
